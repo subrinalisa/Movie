@@ -1,0 +1,571 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+/*--------------------------------------------------------------------
+Global
+---------------------------------------------------------------------*/
+$text-color: #202020;
+$primary-color: #EC1C24;
+$secondary-color: #B8161C;
+$border: 1px solid #d5d5d5;
+$scrollbar-color: gray;
+
+@mixin fonts($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@mixin transition {
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+@mixin radius {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    @include fonts(16px, 400, $text-color);
+    background: #202020;
+    min-height: 100vh;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $scrollbar-color;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+    margin: 0;
+}
+
+small {
+    font-size: 14px;
+}
+
+a,
+a:hover {
+    color: $primary-color;
+    text-decoration: none;
+}
+
+i,
+svg {
+    display: inline-block;
+    pointer-events: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+iframe {
+    width: 100%;
+}
+
+figure {
+    position: relative;
+
+    img {
+        display: block;
+        width: 100%;
+        @include transition;
+    }
+}
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    @include transition;
+}
+
+.btn-danger {
+    background: $primary-color;
+}
+
+.btn-danger:hover {
+    background: $secondary-color;
+}
+
+.btn:focus,
+.navbar-toggler:focus,
+.form-control:focus,
+.form-select:focus,
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.card-title {
+    @include fonts(18px, 600, $text-color);
+    margin: 0;
+}
+
+.pagination {
+    .page-link {
+        color: $primary-color;
+        @include transition;
+    }
+
+    .page-link:hover,
+    .page-link.active {
+        color: #fff;
+        background: $primary-color;
+    }
+}
+
+.accordion-item {
+    border: $border;
+}
+
+.accordion-item:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.accordion-button {
+    font-weight: 600;
+    color: $primary-color !important;
+    border: none;
+    background: transparent;
+}
+
+.accordion-button:not(.collapsed) {
+    background: transparent;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(../css/chevron-down.svg);
+}
+
+.accordion-button::after {
+    background-image: url(../css/chevron-down.svg);
+}
+
+.accordion-body {
+    padding-top: 0;
+}
+
+.owl-carousel .owl-item img {
+    width: fit-content;
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: 20px;
+}
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel button.owl-dot {
+    padding: 4px 8px !important;
+    background: $primary-color !important;
+}
+
+.owl-theme .owl-nav {
+    position: absolute;
+    top: -70px;
+    right: 0;
+}
+
+/*--------------------------------------------------------------------
+Preloader
+---------------------------------------------------------------------*/
+#preloader {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.loader-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    animation: loader 5s linear infinite;
+
+    div {
+        height: 5vw;
+        max-height: 100%;
+        width: 2vw;
+        max-width: 100%;
+        margin: auto;
+        border-radius: 0vw 10vw 0vw 10vw;
+        box-shadow: inset 0vw 0vw 0vw .1vw $primary-color, 0vw 0vw 1.5vw 0vw $primary-color;
+        overflow: auto;
+        position: absolute;
+    }
+
+    .one {
+        transform: rotate(45deg);
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 7.5vw;
+        animation: animate 1s ease infinite;
+    }
+
+    .two {
+        transform: rotate(90deg);
+        left: 5.5vw;
+        right: 0;
+        top: 0;
+        bottom: 5.5vw;
+        animation: animate 1s .125s ease infinite;
+    }
+
+    .three {
+        transform: rotate(135deg);
+        left: 7.5vw;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        animation: animate 1s .25s ease infinite;
+    }
+
+    .four {
+        transform: rotate(180deg);
+        left: 5.5vw;
+        right: 0;
+        top: 5.5vw;
+        bottom: 0;
+        animation: animate 1s .375s ease infinite;
+        -webkit-animation: animate 1s .375s ease infinite;
+    }
+
+    .five {
+        transform: rotate(225deg);
+        left: 0;
+        right: 0;
+        top: 7.5vw;
+        bottom: 0;
+        animation: animate 1s .5s ease infinite;
+    }
+
+    .six {
+        transform: rotate(270deg);
+        left: 0;
+        right: 5.5vw;
+        top: 5.5vw;
+        bottom: 0;
+        animation: animate 1s .625s ease infinite;
+    }
+
+    .seven {
+        transform: rotate(315deg);
+        left: 0;
+        right: 7.5vw;
+        top: 0;
+        bottom: 0;
+        animation: animate 1s .750s ease infinite;
+    }
+
+    .eight {
+        transform: rotate(360deg);
+        left: 0;
+        right: 5.5vw;
+        top: 0;
+        bottom: 5.5vw;
+        animation: animate 1s .875s ease infinite;
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes animate {
+    50% {
+        box-shadow: inset 0vw 0vw 0vw .1vw $secondary-color, 0vw 0vw 1.5vw 0vw $secondary-color;
+    }
+}
+
+/*--------------------------------------------------------------------
+Scroll Up
+---------------------------------------------------------------------*/
+#scrollUp {
+    color: #fff !important;
+    line-height: 30px;
+    padding: 0;
+    border-radius: 5px 5px 0 0;
+    background: $primary-color;
+    height: 30px;
+    margin-bottom: 0;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 100 !important;
+}
+
+#scrollUp:hover {
+    height: 50px;
+}
+
+/*--------------------------------------------------------------------
+Header
+---------------------------------------------------------------------*/
+header {
+    background: url(../images/bg.jpg) no-repeat center/cover;
+}
+
+.navigation-wrapper {
+    padding: 16px 0;
+
+    .nav-link {
+        @include fonts(16px, 600, #fff);
+        margin: 0 10px;
+    }
+
+    .nav-link.active {
+        color: $primary-color;
+    }
+
+    .nav-item:last-child {
+        .nav-link {
+            margin-right: 0;
+        }
+    }
+
+    form {
+        margin-left: 20px;
+    }
+}
+
+.banner {
+    color: #fff;
+    padding: 25px 0;
+
+    h1 {
+        @include fonts(50px, 600, #fff);
+        margin-bottom: 20px;
+
+        span {
+            color: $primary-color;
+        }
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 16px;
+        max-width: 600px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        min-width: 200px;
+    }
+}
+
+/*--------------------------------------------------------------------
+Section
+---------------------------------------------------------------------*/
+section {
+    padding: 50px 0;
+}
+
+.section-title {
+    h2 {
+        @include fonts(36px, 600, #fff);
+        text-transform: capitalize;
+    }
+
+    hr {
+        width: 100px;
+        height: 3px;
+        background: $primary-color;
+        opacity: 1;
+    }
+}
+
+.single {
+    .card {
+        color: #fff;
+        margin-top: 20px;
+        background: transparent;
+        border: none;
+        @include radius();
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .card-body {
+        background: rgba(0, 0, 0, 0.1);
+
+        .name {
+            margin-right: 8px;
+            height: 50px;
+            overflow: hidden;
+        }
+    }
+
+    .card-footer {
+        color: #fff;
+        background: $primary-color;
+        width: 100%;
+        height: 70%;
+        overflow: hidden;
+        position: absolute;
+        bottom: -1000px;
+        @include transition();
+        z-index: 2;
+
+        h6 {
+            @include fonts(17px, 600, #fff);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        hr {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+    }
+
+    .card:hover {
+        .card-footer {
+            bottom: 0;
+        }
+    }
+
+    figure {
+        img {
+            display: block;
+           width: 100%;
+        }
+    }
+}
+
+/*--------------------------------------------------------------------
+Footer
+---------------------------------------------------------------------*/
+footer {
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    background: #1a1919;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+}
+
+/*--------------------------------------------------------------------
+Responsive
+---------------------------------------------------------------------*/
+@media (max-width: 767.98px) {
+    .navigation-wrapper {
+        border-bottom: $border;
+
+        .nav-link {
+            padding: 8px 16px 0;
+            margin: 0;
+        }
+
+        form {
+            margin: 12px 16px 0;
+        }
+    }
+
+    .banner {
+        h1 {
+            font-size: 36px;
+        }
+
+        img {
+            margin-top: 30px;
+        }
+    }
+
+    .owl-theme .owl-nav {
+        position: absolute;
+        top: 100%;
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .banner {
+        h1 {
+            font-size: 26px;
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .banner {
+        h1 {
+            font-size: 36px;
+        }
+    }
+}
