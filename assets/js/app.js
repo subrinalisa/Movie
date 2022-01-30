@@ -34,6 +34,7 @@ const owlActivation = (container) => {
 }
 const renderData = (data, container) => {
     const check = container.classList.contains('row');
+    container.innerHTML = '';
     data.map((element) => {
         let name = element.title ? element.title : element.name;
         let img = `https://image.tmdb.org/t/p/w500/${element.poster_path}`;
@@ -46,7 +47,7 @@ const renderData = (data, container) => {
                     <div class="single">
                         <div class="card">
                             <figure>
-                                <a href="details.html"><img src=${img} class="img-fluid" alt="${name}"></a>
+                                <a href="#"><img src=${img} class="img-fluid" alt="${name}" img-id="${element.id}"></a>
                             </figure>
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -72,7 +73,7 @@ const renderData = (data, container) => {
                 <div class="single">
                     <div class="card">
                         <figure>
-                            <a href="details.html"><img src=${img} class="img-fluid" alt="${name}"></a>
+                            <a href="#"><img src=${img} class="img-fluid" alt="${name}" img-id="${element.id}"></a>
                         </figure>
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
@@ -97,8 +98,10 @@ const renderData = (data, container) => {
     owlActivation(container);
 }
 const fetchData = async (url, container) => {
+    lastUrl = url;
     const res = await fetch(url);
     const data = await res.json();
+    currPage = data.page;
     renderData(data.results, container);
 }
 /*====================================
@@ -108,11 +111,18 @@ const apiKey = 'cc1515597480af4c70bc29393fc2e4ac';
 const movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`;
 const tvUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&sort_by=popularity.desc`;
 const imgLink = `https://i.ibb.co/BqCkWGx/Untitled-design.jpg`;
-
+let currPage = 1;
+let lastUrl = '';
 const topMovies = document.querySelector('#top-movies .owl-carousel');
 const topSeries = document.querySelector('#top-series .owl-carousel');
 const allMovies = document.querySelector('#movies .content');
 const allSeries = document.querySelector('#series .content');
+const searchingSection = document.querySelector('#searching');
+const searching = document.querySelector('#searching .content');
+const searchForm = document.querySelector('#search');
+const searchInput = document.querySelector('#search input');
+const loadMore = document.querySelector('#load-more');
+searchingSection.style.display = 'none';
 /*====================================
 Functions Calling
 ======================================*/
@@ -128,3 +138,23 @@ if (allMovies) {
 if (allSeries) {
     fetchData(tvUrl, allSeries);
 }
+if (loadMore) {
+    loadMore.addEventListener('click', (e) => {
+        lastUrl = lastUrl + `&page=${currPage+1}`;
+        if (allMovies) {
+            jQuery("#preloader").show().fadeOut(250);
+            fetchData(lastUrl, allMovies);
+        } else if (allSeries) {
+            jQuery("#preloader").show().fadeOut(250);
+            fetchData(lastUrl, allSeries);
+        }
+    });
+}
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = searchInput.value.trim();
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${v}`;
+    searchingSection.style.display = 'block';
+    fetchData(url, searching);
+    searchInput.value = '';
+});

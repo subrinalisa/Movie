@@ -63,26 +63,38 @@
                     </ul>
                     <form id="search">
                         <div class="input-group">
-                            <input type="text" class="form-control form-control-sm" placeholder="Search...">
+                            <input type="text" class="form-control form-control-sm" placeholder="Search..." required>
                             <button class="btn btn-sm btn-danger" type="button"><i class="bi bi-search"></i></button>
                         </div>
                     </form>
                 </div>
             </nav>
-            <!-- Banner -->
-            <div class="banner" id="banner">
-                <div class="section-title align-self-center">
-                    <h2>Latest Release</h2>
-                    <hr>
-                </div>
-            </div>
         </div>
     </header>
+    <!-- ========= Search ========= -->
+    <section id="searching">
+        <div class="container">
+            <div class="section-title align-self-center">
+                <h2>Searching Results</h2>
+                <hr>
+            </div>
+            <div class="row content">
+                <!-- Render Dynamically -->
+            </div>
+        </div>
+    </section>
     <!-- ========= All Series ========= -->
     <section id="series">
         <div class="container">
+            <div class="section-title align-self-center">
+                <h2>Latest Release</h2>
+                <hr>
+            </div>
             <div class="row content">
                 <!-- Render Dynamically -->
+            </div>
+            <div class="mt-5 text-center">
+                <button type="button" class="btn btn-danger" id="load-more">Load More</button>
             </div>
         </div>
     </section>

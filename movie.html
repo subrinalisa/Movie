@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,7 +20,6 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
     <!-- ========= Preloader ========= -->
     <div id="preloader">
@@ -63,26 +61,38 @@
                     </ul>
                     <form id="search">
                         <div class="input-group">
-                            <input type="text" class="form-control form-control-sm" placeholder="Search...">
+                            <input type="text" class="form-control form-control-sm" placeholder="Search..." required>
                             <button class="btn btn-sm btn-danger" type="button"><i class="bi bi-search"></i></button>
                         </div>
                     </form>
                 </div>
             </nav>
-            <!-- Banner -->
-            <div class="banner" id="banner">
-                <div class="section-title align-self-center">
-                    <h2>Latest Release</h2>
-                    <hr>
-                </div>
-            </div>
         </div>
     </header>
+    <!-- ========= Search ========= -->
+    <section id="searching">
+        <div class="container">
+            <div class="section-title align-self-center">
+                <h2>Searching Results</h2>
+                <hr>
+            </div>
+            <div class="row content">
+                <!-- Render Dynamically -->
+            </div>
+        </div>
+    </section>
     <!-- ========= All Movies ========= -->
     <section id="movies">
         <div class="container">
+            <div class="section-title align-self-center">
+                <h2>Latest Release</h2>
+                <hr>
+            </div>
             <div class="row content">
                 <!-- Render Dynamically -->
+            </div>
+            <div class="mt-5 text-center">
+                <button type="button" class="btn btn-danger" id="load-more">Load More</button>
             </div>
         </div>
     </section>
@@ -96,7 +106,6 @@
             </small>
         </div>
     </footer>
-    <!-- ========= Js Files ========= -->
     <!-- Jquery Js -->
     <script src="assets/js/jquery-1.12.4.js"></script>
     <!-- Popper Js -->
@@ -109,5 +118,4 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
-
 </html>
