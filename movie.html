@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,6 +21,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <!-- ========= Preloader ========= -->
     <div id="preloader">
@@ -91,9 +93,20 @@
             <div class="row content">
                 <!-- Render Dynamically -->
             </div>
-            <div class="mt-5 text-center">
-                <button type="button" class="btn btn-danger" id="load-more">Load More</button>
-            </div>
+            <!-- Pagination -->
+            <ul class="pagination mt-5">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous" id="prevBtn">
+                        Prev
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link active" href="javascript: void(0);" id="currBtn">1</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next" id="nextBtn">
+                       Next
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
     <!-- ========= Footer ========= -->
@@ -118,4 +131,5 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
+
 </html>

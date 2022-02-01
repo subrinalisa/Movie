@@ -104,6 +104,15 @@ const fetchData = async (url, container) => {
     currPage = data.page;
     renderData(data.results, container);
 }
+const paginationRender = (url) => {
+    if (allMovies) {
+        jQuery("#preloader").show().fadeOut(250);
+        fetchData(url, allMovies);
+    } else if (allSeries) {
+        jQuery("#preloader").show().fadeOut(250);
+        fetchData(url, allSeries);
+    }
+}
 /*====================================
 DOM Elements
 ======================================*/
@@ -121,7 +130,10 @@ const searchingSection = document.querySelector('#searching');
 const searching = document.querySelector('#searching .content');
 const searchForm = document.querySelector('#search');
 const searchInput = document.querySelector('#search input');
-const loadMore = document.querySelector('#load-more');
+const pagination = document.querySelector('.pagination');
+const prevBtn = document.querySelector('#prevBtn');
+const nextBtn = document.querySelector('#nextBtn');
+const currBtn = document.querySelector('#currBtn');
 searchingSection.style.display = 'none';
 /*====================================
 Functions Calling
@@ -138,22 +150,28 @@ if (allMovies) {
 if (allSeries) {
     fetchData(tvUrl, allSeries);
 }
-if (loadMore) {
-    loadMore.addEventListener('click', (e) => {
+if (pagination || prevBtn || nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         lastUrl = lastUrl + `&page=${currPage+1}`;
-        if (allMovies) {
-            jQuery("#preloader").show().fadeOut(250);
-            fetchData(lastUrl, allMovies);
-        } else if (allSeries) {
-            jQuery("#preloader").show().fadeOut(250);
-            fetchData(lastUrl, allSeries);
+        paginationRender(lastUrl);
+        currBtn.innerText = `${currPage+1}`;
+    });
+    prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currPage > 1) {
+            lastUrl = lastUrl + `&page=${currPage-1}`;
+            paginationRender(lastUrl);
+            currBtn.innerText = `${currPage-1}`;
+        } else {
+            alert(`Invalid Request`);
         }
     });
 }
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const v = searchInput.value.trim();
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${v}`;
+    const url = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${v}`;
     searchingSection.style.display = 'block';
     fetchData(url, searching);
     searchInput.value = '';
