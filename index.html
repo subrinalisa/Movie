@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/vendor/tab.css">
     <link rel="stylesheet" href="assets/vendor/owlcarousel/owl-theme.min.css">
     <link rel="stylesheet" href="assets/vendor/owlcarousel/owl-carousel.min.css">
+    <link rel="stylesheet" href="assets/vendor/magnific-popup/magnific-popup.css">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -71,20 +72,6 @@
                     </form>
                 </div>
             </nav>
-            <!-- Banner -->
-            <div class="banner" id="banner">
-                <div class="row">
-                    <div class="col-xl-8 col-md-6 align-self-center">
-                        <h1>Welcome To <span>Movie Club</span></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio et cupiditate accusantium
-                            a. Aliquam doloremque quam obcaecati velit aspernatur tempora.</p>
-                        <a href="movie.html" class="btn btn-danger rounded-pill">Discover More</a>
-                    </div>
-                    <div class="col-xl-4 col-md-6 align-self-center">
-                        <img src="./assets/images/banner.png" class="img-fluid" alt="">
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
     <!-- ========= Search ========= -->
@@ -133,6 +120,19 @@
             </small>
         </div>
     </footer>
+    <!-- ========= Modal ========= -->
+    <div class="modal fade" id="preview">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close" onclick="stopVdo()"><i
+                            class="bi bi-x-lg text-white"></i></button>
+                    <div class="ratio ratio-16x9">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ========= Js Files ========= -->
     <!-- Jquery Js -->
     <script src="assets/js/jquery-1.12.4.js"></script>
@@ -143,6 +143,7 @@
     <!-- Plugin Js -->
     <script src="assets/vendor/scroll-up.min.js"></script>
     <script src="assets/vendor/owlcarousel/owl-carousel.min.js"></script>
+    <script src="assets/vendor/magnific-popup/magnific-popup.min.js"></script>
     <!-- Custom Js -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/app.js"></script>

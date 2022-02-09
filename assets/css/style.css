@@ -7,7 +7,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   color: #202020;
-  background: #202020;
+  background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
   min-height: 100vh;
   position: relative;
 }
@@ -23,7 +23,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: gray;
+  background: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   border-radius: 8px;
 }
 
@@ -95,6 +95,7 @@ iframe {
 
 figure {
   position: relative;
+  overflow: hidden;
 }
 
 figure img {
@@ -127,15 +128,13 @@ figure img {
           box-shadow: none;
 }
 
-.card-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #202020;
-  margin: 0;
-}
-
 .pagination .page-link {
-  color: #EC1C24;
+  font-size: 14px;
+  border: none;
+  background: #B8161C;
+  color: #fff;
+  margin-right: 8px;
+  padding: 8px 16px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -144,37 +143,6 @@ figure img {
 .pagination .page-link.active {
   color: #fff;
   background: #EC1C24;
-}
-
-.accordion-item {
-  border: 1px solid #d5d5d5;
-}
-
-.accordion-item:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-.accordion-button {
-  font-weight: 600;
-  color: #EC1C24 !important;
-  border: none;
-  background: transparent;
-}
-
-.accordion-button:not(.collapsed) {
-  background: transparent;
-}
-
-.accordion-button:not(.collapsed)::after {
-  background-image: url(../css/chevron-down.svg);
-}
-
-.accordion-button::after {
-  background-image: url(../css/chevron-down.svg);
-}
-
-.accordion-body {
-  padding-top: 0;
 }
 
 .owl-carousel .owl-item img {
@@ -393,11 +361,11 @@ Scroll Up
 Header
 ---------------------------------------------------------------------*/
 header {
-  background: url(../images/bg.jpg) no-repeat center/cover;
+  border-bottom: 1px solid #645c5c;
 }
 
 .navigation-wrapper {
-  padding: 16px 0;
+  padding: 8px 0;
 }
 
 .navigation-wrapper .nav-link {
@@ -417,33 +385,6 @@ header {
 
 .navigation-wrapper form {
   margin-left: 20px;
-}
-
-.banner {
-  color: #fff;
-  padding: 25px 0;
-}
-
-.banner h1 {
-  font-size: 50px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.banner h1 span {
-  color: #EC1C24;
-}
-
-.banner p {
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 16px;
-  max-width: 600px;
-}
-
-.banner .btn {
-  padding: 8px 16px;
-  min-width: 200px;
 }
 
 /*--------------------------------------------------------------------
@@ -470,19 +411,25 @@ section {
 .single .card {
   color: #fff;
   margin-top: 20px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.4);
   border: none;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
   overflow: hidden;
   z-index: 1;
 }
 
-.single .card-body {
-  background: rgba(0, 0, 0, 0.1);
+.single .card figure span {
+  display: inline-block;
+  padding: 4px 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #EC1C24;
+  border-bottom-right-radius: 5px;
 }
 
 .single .card-body .name {
@@ -493,7 +440,7 @@ section {
 
 .single .card-footer {
   color: #fff;
-  background: #EC1C24;
+  background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
   width: 100%;
   height: 70%;
   overflow: hidden;
@@ -517,6 +464,33 @@ section {
   opacity: 0.9;
 }
 
+.single .card-footer p {
+  line-height: 25px;
+  height: 150px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.single .card-footer button {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.single .card-footer button:hover {
+  color: #202020;
+  background: #fff;
+}
+
+.single .card:hover img {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
 .single .card:hover .card-footer {
   bottom: 0;
 }
@@ -527,13 +501,30 @@ section {
 }
 
 /*--------------------------------------------------------------------
+Modal
+---------------------------------------------------------------------*/
+.modal-content {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-body {
+  position: relative;
+}
+
+.modal-body button {
+  display: block;
+  margin-left: auto;
+}
+
+/*--------------------------------------------------------------------
 Footer
 ---------------------------------------------------------------------*/
 footer {
   color: #fff;
   text-align: center;
   padding: 20px 0;
-  background: #1a1919;
+  background: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
   width: 100%;
   position: absolute;
   top: 100%;
@@ -544,7 +535,7 @@ Responsive
 ---------------------------------------------------------------------*/
 @media (max-width: 767.98px) {
   .navigation-wrapper {
-    border-bottom: 1px solid #d5d5d5;
+    border-bottom: 1px solid #645c5c;
   }
   .navigation-wrapper .nav-link {
     padding: 8px 16px 0;

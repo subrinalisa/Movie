@@ -4,10 +4,11 @@
 Global
 ---------------------------------------------------------------------*/
 $text-color: #202020;
+$gradient: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
 $primary-color: #EC1C24;
 $secondary-color: #B8161C;
-$border: 1px solid #d5d5d5;
-$scrollbar-color: gray;
+$border: 1px solid #645c5c;
+$scrollbar-color:linear-gradient(315deg, #2d3436 0%, #000000 74%);
 
 @mixin fonts($size, $weight, $color) {
     font-size: $size;
@@ -22,17 +23,17 @@ $scrollbar-color: gray;
 }
 
 @mixin radius {
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     @include fonts(16px, 400, $text-color);
-    background: #202020;
+    background-image: $gradient;
     min-height: 100vh;
     position: relative;
 }
@@ -119,6 +120,7 @@ iframe {
 
 figure {
     position: relative;
+    overflow: hidden;
 
     img {
         display: block;
@@ -148,14 +150,14 @@ figure {
     box-shadow: none;
 }
 
-.card-title {
-    @include fonts(18px, 600, $text-color);
-    margin: 0;
-}
-
 .pagination {
     .page-link {
-        color: $primary-color;
+        font-size: 14px;
+        border: none;
+        background: $secondary-color;
+        color: #fff;
+        margin-right: 8px;
+        padding: 8px 16px;
         @include transition;
     }
 
@@ -164,37 +166,6 @@ figure {
         color: #fff;
         background: $primary-color;
     }
-}
-
-.accordion-item {
-    border: $border;
-}
-
-.accordion-item:not(:last-child) {
-    margin-bottom: 16px;
-}
-
-.accordion-button {
-    font-weight: 600;
-    color: $primary-color !important;
-    border: none;
-    background: transparent;
-}
-
-.accordion-button:not(.collapsed) {
-    background: transparent;
-}
-
-.accordion-button:not(.collapsed)::after {
-    background-image: url(../css/chevron-down.svg);
-}
-
-.accordion-button::after {
-    background-image: url(../css/chevron-down.svg);
-}
-
-.accordion-body {
-    padding-top: 0;
 }
 
 .owl-carousel .owl-item img {
@@ -374,11 +345,11 @@ Scroll Up
 Header
 ---------------------------------------------------------------------*/
 header {
-    background: url(../images/bg.jpg) no-repeat center/cover;
+    border-bottom: $border;
 }
 
 .navigation-wrapper {
-    padding: 16px 0;
+    padding: 8px 0;
 
     .nav-link {
         @include fonts(16px, 600, #fff);
@@ -397,31 +368,6 @@ header {
 
     form {
         margin-left: 20px;
-    }
-}
-
-.banner {
-    color: #fff;
-    padding: 25px 0;
-
-    h1 {
-        @include fonts(50px, 600, #fff);
-        margin-bottom: 20px;
-
-        span {
-            color: $primary-color;
-        }
-    }
-
-    p {
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 16px;
-        max-width: 600px;
-    }
-
-    .btn {
-        padding: 8px 16px;
-        min-width: 200px;
     }
 }
 
@@ -450,16 +396,26 @@ section {
     .card {
         color: #fff;
         margin-top: 20px;
-        background: transparent;
+        background: rgba(0, 0, 0, 0.4);
         border: none;
         @include radius();
         overflow: hidden;
         z-index: 1;
+
+        figure {
+            span {
+                display: inline-block;
+                padding: 4px 16px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: $primary-color;
+                border-bottom-right-radius: 5px;
+            }
+        }
     }
 
     .card-body {
-        background: rgba(0, 0, 0, 0.1);
-
         .name {
             margin-right: 8px;
             height: 50px;
@@ -469,7 +425,7 @@ section {
 
     .card-footer {
         color: #fff;
-        background: $primary-color;
+        background-image: $gradient;
         width: 100%;
         height: 70%;
         overflow: hidden;
@@ -488,9 +444,34 @@ section {
             margin: 8px 0;
             opacity: 0.9;
         }
+
+        p {
+            line-height: 25px;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        button {
+            @include fonts(14px, 400, #fff);
+            border: 1px solid #fff;
+        }
+
+        button:hover {
+            color: $text-color;
+            background: #fff;
+        }
     }
 
     .card:hover {
+        img {
+            transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            -o-transform: scale(1.2);
+        }
+
         .card-footer {
             bottom: 0;
         }
@@ -505,13 +486,30 @@ section {
 }
 
 /*--------------------------------------------------------------------
+Modal
+---------------------------------------------------------------------*/
+.modal-content {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-body {
+    position: relative;
+
+    button {
+        display: block;
+        margin-left: auto;
+    }
+}
+
+/*--------------------------------------------------------------------
 Footer
 ---------------------------------------------------------------------*/
 footer {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    background: #1a1919;
+    background: $scrollbar-color;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
     width: 100%;
     position: absolute;
     top: 100%;
