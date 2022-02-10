@@ -63,8 +63,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="series.html">Series</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">
+                                Genre
+                            </a>
+                            <ul class="dropdown-menu"></ul>
+                        </li>
                     </ul>
-                    <form id="search">
+                    <form id="search-form">
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" placeholder="Search..." required>
                             <button class="btn btn-sm btn-danger" type="button"><i class="bi bi-search"></i></button>
@@ -75,37 +81,37 @@
         </div>
     </header>
     <!-- ========= Search ========= -->
-    <section id="searching">
+    <section class="searching">
         <div class="container">
             <div class="section-title align-self-center">
                 <h2>Searching Results</h2>
                 <hr>
             </div>
-            <div class="row content">
+            <div class="row content" id="searching">
                 <!-- Render Dynamically -->
             </div>
         </div>
     </section>
     <!-- ========= Top Movies ========= -->
-    <section id="top-movies">
+    <section class="movies">
         <div class="container">
             <div class="section-title align-self-center">
                 <h2>Top Movies</h2>
                 <hr>
             </div>
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-theme" id="movies">
                 <!-- Render Dynamically -->
             </div>
         </div>
     </section>
     <!-- ========= Top Series ========= -->
-    <section id="top-series">
+    <section class="series">
         <div class="container">
             <div class="section-title align-self-center">
                 <h2>Top Series</h2>
                 <hr>
             </div>
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-theme" id="series">
                 <!-- Render Dynamically -->
             </div>
         </div>
